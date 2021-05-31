@@ -25,3 +25,23 @@ body {
   margin: 0;
   background-color: var(--c-bckgr-primary);
 }
+
+/* Page title */
+.heading {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  margin: var(--spacer) 0 0 0;
+  padding: 0 var(--spacer);
+}
+
+/* Text */
+.text {
+  margin: 1em 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-family: var(--font);
+  font-size: 1.125rem;
+}
