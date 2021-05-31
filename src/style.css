@@ -1,0 +1,27 @@
+:root {
+  --spacer: 20px;
+  --font: 'Sarabun', sans-serif;
+  --font-heading: 'Goldman', 'Courier New', serif;
+  --c-font: #344852;
+  --c-font-light: #fefefe;
+  --c-accent: #344852;
+  --c-bckgr-primary: #fefefe;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 100%;
+  color: var(--c-font);
+  line-height: 1.5;
+  margin: 0;
+  background-color: var(--c-bckgr-primary);
+}
