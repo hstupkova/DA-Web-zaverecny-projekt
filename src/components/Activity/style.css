@@ -1,0 +1,42 @@
+.activity {
+  border: 1px solid var(--c-accent);
+  padding: calc(var(--spacer) / 2);
+}
+
+.activity__link {
+  text-decoration: none;
+}
+
+.activity__img {
+  max-width: 100%;
+  display: block;
+}
+
+.activity__title,
+.activity__description {
+  font-family: var(--font);
+  color: var(--c-font);
+  text-align: center;
+}
+
+.activity__title {
+  font-size: 1.125rem;
+  margin-top: var(--spacer);
+  margin-bottom: 0;
+}
+
+.activity__description {
+  font-size: 1rem;
+  margin-top: calc(var(--spacer) / 2);
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .activity__title {
+    font-size: 1.25rem;
+  }
+
+  .activity__description {
+    font-size: 1.125rem;
+  }
+}

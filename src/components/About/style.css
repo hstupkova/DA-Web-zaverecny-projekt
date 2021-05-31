@@ -3,12 +3,3 @@
   margin: 0 auto;
 }
 
-.subheading {
-  padding: 0 var(--spacer);
-  margin: calc(var(--spacer) * 2) auto 0 auto;
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  line-height: 1;
-}
