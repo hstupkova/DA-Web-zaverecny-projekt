@@ -55,3 +55,14 @@ body {
   font-family: var(--font);
   font-size: 1.125rem;
 }
+
+/* Buttons */
+.button {
+  color: var(--c-bckgr-primary);
+  font-family: var(--font);
+  font-size: 1.125rem;
+  background-color: var(--c-accent);
+  border: 2px solid var(--c-accent);
+  border-radius: 5px;
+  padding: 0.5em 1em;
+}

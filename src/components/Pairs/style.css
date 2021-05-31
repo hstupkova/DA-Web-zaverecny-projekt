@@ -1,0 +1,94 @@
+.pairs {
+  margin-top: calc(var(--spacer) * 2);
+}
+
+.pairs__text {
+  padding-left: var(--spacer);
+  padding-right: var(--spacer);
+  margin: 0 auto;
+
+  max-width: 700px;
+}
+
+.pairs__wrapper {
+  margin-top: var(--spacer);
+  padding-left: var(--spacer);
+  padding-right: var(--spacer);
+}
+
+.game__button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.game {
+  margin-top: var(--spacer);
+
+  display: grid;
+  grid-template-columns: repeat(3, 95px);
+  grid-auto-rows: 95px;
+  gap: 2px;
+  justify-content: center;
+}
+
+.deck__wrapper {
+  max-width: 495px;
+  margin: 0 auto;
+}
+
+.deck__title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  text-align: center;
+  margin: var(--spacer) 0 0 0;
+}
+
+.deck {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 60px;
+  gap: 2px;
+}
+
+@media screen and (min-width: 576px) {
+  .game {
+    grid-template-columns: repeat(4, 95px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .game {
+    grid-template-columns: repeat(4, 120px);
+    grid-auto-rows: 120px;
+    gap: 5px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .pairs__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .game__button-wrapper {
+    height: 68px;
+    align-items: center;
+  }
+
+  .deck__wrapper {
+    padding-left: calc(var(--spacer) * 2);
+    flex-grow: 1;
+    max-width: 495px;
+    margin: 0;
+  }
+
+  .deck__title {
+    text-align: left;
+    margin: 0 0 var(--spacer) 0;
+  }
+
+  .game {
+    margin-top: 0;
+  }
+}
+

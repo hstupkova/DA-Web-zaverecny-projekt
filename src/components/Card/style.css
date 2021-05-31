@@ -1,0 +1,19 @@
+.card {
+  font-size: 1rem;
+  color: var(--c-font);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  border: 2px solid var(--c-accent);
+  padding: 2px;
+}
+
+.card--empty {
+  border: 2px dotted var(--c-accent);
+}
+
+.card--selected {
+  background-color: #FEE1BD;
+}
