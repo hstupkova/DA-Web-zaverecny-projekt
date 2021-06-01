@@ -1,6 +1,7 @@
 .card {
   font-size: 1rem;
   color: var(--c-font);
+  background-color: var(--c-bckgr-primary);
   display: flex;
   text-align: center;
   justify-content: center;
@@ -8,6 +9,8 @@
 
   border: 2px solid var(--c-accent);
   padding: 2px;
+
+  cursor: pointer;
 }
 
 .card--empty {
