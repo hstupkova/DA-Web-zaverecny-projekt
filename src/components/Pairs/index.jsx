@@ -2,17 +2,27 @@ import React from 'react';
 import './style.css';
 
 import Card from '../Card';
+import Answer from '../Answer';
 import { pairs } from './pairs.js';
 
 const Pairs = () => {
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
+
   let numberOfPairs = 9;
   const mq = window.matchMedia('(min-width: 576px)');
   if (mq.matches) { numberOfPairs = 12; }
-  
+
+  shuffleArray(pairs);
   const pairsToDisplay = pairs.slice(0, numberOfPairs);
-  const wordsToDisplayCS = pairsToDisplay.map(item => { return {word: item.cs, couple: item.en}});
-  const wordsToDisplayEN = pairsToDisplay.map(item => { return {word: item.en, couple: item.cs}});
-  const wordsToDisplay = [].concat(wordsToDisplayCS, wordsToDisplayEN);
+  const wordsCS = pairsToDisplay.map(item => { return {word: item.cs, couple: item.en}});
+  const wordsEN = pairsToDisplay.map(item => { return {word: item.en, couple: item.cs}});
+  const words = [].concat(wordsCS, wordsEN);
+  shuffleArray(words);
 
   return (
     <main className="pairs">
@@ -29,7 +39,7 @@ const Pairs = () => {
 
           <div className="game">
             {
-              wordsToDisplay.map((item, index) => 
+              words.map((item, index) => 
                 <Card key={index} text={item.word} />)
             }
             
@@ -39,8 +49,8 @@ const Pairs = () => {
           <h2 className="deck__title">Nalezené dvojice</h2>
           <div className="deck">
             {
-              wordsToDisplay.map((item, index) => 
-                <Card key={index} text={item.word} />)
+              words.map((item) => 
+                <Answer key={item.word} />)
             }
           </div>
         </div>

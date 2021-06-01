@@ -1,0 +1,15 @@
+.answer {
+  font-size: 1rem;
+  color: var(--c-font);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  border: 2px dotted var(--c-accent);
+  padding: 2px;
+}
+
+.answer--filled {
+  border: 2px solid var(--c-accent);
+}
