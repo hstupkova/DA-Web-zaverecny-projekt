@@ -10,36 +10,37 @@ import xorWith from 'lodash/xorWith';
 
 const Pairs = () => {
   const [words, setWords] = useState([]);
+  const [cardsSelected, setCardsSelected] = useState([]);
 
   useEffect(() => {
     let numberOfPairs = 9;
     const mq = window.matchMedia('(min-width: 576px)');
     if (mq.matches) { numberOfPairs = 12; }
 
-    const pairsCopy = shuffleArray(pairs);
+    const pairsShuffled = shuffleArray(pairs);
 
-    const pairsToDisplay = pairsCopy.slice(0, numberOfPairs);
+    const pairsToDisplay = pairsShuffled.slice(0, numberOfPairs);
     const wordsCS = pairsToDisplay.map(item => { return {word: item.cs, couple: item.en, language: 'cs'}});
     shuffleArray(wordsCS);
     const wordsEN = pairsToDisplay.map(item => { return {word: item.en, couple: item.cs, language: 'en'}});
     shuffleArray(wordsEN);
     const wordsCombined = [].concat(wordsCS, wordsEN);
     setWords(wordsCombined);
-    console.log(wordsCombined);
   }, []);
 
-  const [cardsSelected, setCardsSelected] = useState([]);
-
   const play = (word, couple, language) => {
-    console.log(word, couple, language);
     const currentCard = {word: word, couple: couple, language: language};
-
     setCardsSelected(xorWith(cardsSelected, [currentCard], isEqual));
   }
 
   useEffect(() => {
     console.log('cardsSelected:');
     console.log(cardsSelected);
+    if (cardsSelected.length === 2 && cardsSelected[0]['word'] === cardsSelected[1]['couple']) {
+      alert('hurá');
+    } else if (cardsSelected.length === 2 && cardsSelected[0]['word'] !== cardsSelected[1]['couple']) {
+      alert('zkus to znova');
+    }
   }, [cardsSelected]);
 
   return (
@@ -60,7 +61,7 @@ const Pairs = () => {
               words !== [] &&
               words.map((item, index) => 
                 <Card key={index} 
-                  text={item.word} 
+                  word={item.word} 
                   couple={item.couple}
                   language={item.language}
                   play={play}
