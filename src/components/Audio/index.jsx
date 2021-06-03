@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import useSound from 'use-sound';
-// import number1 from './assets/number1.mp3';
+import number1 from './records/number1.mp3';
 import './style.css';
 
 const Audio = () => {
   const [answer, setAnswer] = useState('');
   const [answerAccepted, setAnswerAccepted] = useState(null);
 
-  // const [play] = useSound(number1);
+  const [play] = useSound(number1);
 
   const handleChange = (event) => {
     setAnswer(event.target.value.toLowerCase());
   };
-
-  useEffect(() => {
-    console.log(answer);
-  }, [answer]);
 
   const handleClick = () => {
     answer === 'length' ? setAnswerAccepted(true) : setAnswerAccepted(false);
@@ -23,9 +19,15 @@ const Audio = () => {
 
   return (
     <>
-      <section className="listening">
-        <div className="listening__assignement">
-          <p className="listening__sentence">
+      <main className="listening">
+        <section className="listening__text">
+          <h1 className="heading">Poslech</h1>
+          <p className="text">
+            Poslechni si nahrávku a doplň chybějící slovo věty.
+          </p>
+        </section>
+        <section className="listening__assignement">
+          <p className="listening__sentence text">
             The <input type="text" value={answer} onChange={handleChange} />
             property of an array tells us how many elements it has.
           </p>
@@ -33,6 +35,7 @@ const Audio = () => {
             className="listening__speaker"
             src="./assets/speaker.svg"
             alt="speaker"
+            onClick={play}
           />
           <img
             className="listening__check"
@@ -42,27 +45,24 @@ const Audio = () => {
               display: answerAccepted === true ? 'inline-block' : 'none',
             }}
           />
-        </div>
-        <div className="listening__feedback--negative">
+        </section>
+        <section
+          className="listening__feedback--negative text"
+          style={{
+            display: answerAccepted === false ? 'inline-block' : 'none',
+          }}
+        >
           <img
             className="listening__cross"
             src="./assets/cross.svg"
             alt="bad answer"
-            style={{
-              display: answerAccepted === false ? 'inline-block' : 'none',
-            }}
           />
-          <p
-            className="listening__solution"
-            style={{
-              display: answerAccepted === false ? 'inline-block' : 'none',
-            }}
-          >
+          <p className="listening__solution text">
             Správná odpověď je:
             <span className="listening__solution--bold"> length</span>.
           </p>
-        </div>
-        <div className="listening__buttons">
+        </section>
+        <nav className="listening__buttons">
           <button
             className={
               answerAccepted === null
@@ -84,13 +84,13 @@ const Audio = () => {
           >
             Další věta
           </button>
-        </div>
+        </nav>
         <img
           className="listening__programmer"
           src="./assets/programmer-working-desk.jpg"
-          alt=""
+          alt="programmer listening to music"
         />
-      </section>
+      </main>
     </>
   );
 };

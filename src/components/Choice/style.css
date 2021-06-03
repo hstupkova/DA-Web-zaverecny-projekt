@@ -1,0 +1,82 @@
+.choice {
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* assignement */
+.choice__text {
+  padding-left: var(--spacer);
+  padding-right: var(--spacer);
+}
+
+.choice__sentence {
+  text-align: center;
+  display: inline-block;
+}
+
+input[type='radio'] {
+  margin: 0.5rem;
+}
+
+label {
+  margin-right: 1.5rem;
+}
+
+/* feedback */
+.choice__feedback {
+  flex-basis: 100%;
+}
+
+.choice__solution {
+  display: inline;
+}
+
+.choice__solution--bold {
+  font-weight: bold;
+}
+
+/* icons */
+.choice__check {
+  background-color: #00dfc0;
+  border-radius: 50%;
+  vertical-align: middle;
+  min-height: 2rem;
+  margin: 0.5 rem;
+}
+
+.choice__cross {
+  background-color: #fe7597;
+  border-radius: 50%;
+  min-height: 2rem;
+  vertical-align: middle;
+  display: inline;
+}
+
+/* navigation */
+.choice__button {
+  background-color: #00dfc0;
+  font-size: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+  width: 135px;
+  border: 2px solid var(--c-accent);
+  border-radius: 10px;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+.choice__button--disabled {
+  color: var(--c-font-light);
+  background-color: #d3faf5;
+  border: none;
+}
+
+/* picture */
+.choice__programmer {
+  border-radius: 10px;
+  max-width: 60%;
+}
