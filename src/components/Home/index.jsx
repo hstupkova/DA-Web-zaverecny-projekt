@@ -5,7 +5,7 @@ import Activity from '../Activity';
 import { activities } from './activities.js';
 
 const Home = () => (
-  <main>
+  <main class="home">
     <h1 className="heading">Frontend English</h1>
 
     <section className="introduction">

@@ -4,15 +4,11 @@ import './style.css';
 import Card from '../Card';
 import Answer from '../Answer';
 import { pairs } from './pairs.js';
+import { shuffleArray } from '../../library/shuffleArray';
+import isEqual from 'lodash/isEqual';
+import xorWith from 'lodash/xorWith';
 
 const Pairs = () => {
-  const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  };
-
   const [words, setWords] = useState([]);
 
   useEffect(() => {
@@ -20,62 +16,29 @@ const Pairs = () => {
     const mq = window.matchMedia('(min-width: 576px)');
     if (mq.matches) { numberOfPairs = 12; }
 
-    shuffleArray(pairs);
-    const pairsToDisplay = pairs.slice(0, numberOfPairs);
-    const wordsCS = pairsToDisplay.map(item => { return {word: item.cs, couple: item.en}});
-    const wordsEN = pairsToDisplay.map(item => { return {word: item.en, couple: item.cs}});
+    const pairsCopy = shuffleArray(pairs);
+
+    const pairsToDisplay = pairsCopy.slice(0, numberOfPairs);
+    const wordsCS = pairsToDisplay.map(item => { return {word: item.cs, couple: item.en, language: 'cs'}});
+    shuffleArray(wordsCS);
+    const wordsEN = pairsToDisplay.map(item => { return {word: item.en, couple: item.cs, language: 'en'}});
+    shuffleArray(wordsEN);
     const wordsCombined = [].concat(wordsCS, wordsEN);
-    shuffleArray(wordsCombined);
     setWords(wordsCombined);
+    console.log(wordsCombined);
   }, []);
 
   const [cardsSelected, setCardsSelected] = useState([]);
-  const [cardDisabled, setCardDisabled] = useState(false);
-  const [index, setIndex] = useState(null);
 
-  const play = (word, couple) => {
-    
-    console.log(word, couple);
-    const currentCard = {word: word, couple: couple};
+  const play = (word, couple, language) => {
+    console.log(word, couple, language);
+    const currentCard = {word: word, couple: couple, language: language};
 
-    const includesObject = (array, object) => {
-      return array.some(item => 
-        JSON.stringify(item) === JSON.stringify(object));
-    }
-
-    const indexOfObject = (array, object) => {
-      for (let i = 0; i < array.length; i++) {
-        if (JSON.stringify(array[i]) === JSON.stringify(object)) {
-          return i;
-        } else {return null};
-      }
-    }
-
-    if (includesObject(cardsSelected, currentCard)) {
-      setIndex(indexOfObject(cardsSelected, currentCard));
-      if (index === 1) {
-        setCardsSelected(cardsSelected.splice(0, 1));
-        setIndex(null);
-      } else if (index === 0 && cardsSelected.length === 2) {
-        setCardsSelected(cardsSelected.splice(1, 1));
-        setIndex(null);
-      } else if (index === 0 && cardsSelected.length === 1) {
-        setCardsSelected([]);
-        setIndex(null);
-      }
-    } else if (cardsSelected.length < 2) {
-      setCardsSelected(cardsSelected.concat(currentCard));
-    }
-
-    /*
-    if (cardsSelected.length === 2) {
-      setCardDisabled(true);
-    } else {
-      setCardDisabled(false);
-    }*/
+    setCardsSelected(xorWith(cardsSelected, [currentCard], isEqual));
   }
 
   useEffect(() => {
+    console.log('cardsSelected:');
     console.log(cardsSelected);
   }, [cardsSelected]);
 
@@ -99,8 +62,10 @@ const Pairs = () => {
                 <Card key={index} 
                   text={item.word} 
                   couple={item.couple}
+                  language={item.language}
                   play={play}
-                  disabled={cardDisabled} />)
+                  disabled={cardsSelected.length === 2}
+                  selected={cardsSelected.some(card => isEqual(card, item))} />)
             }
             
           </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 
 const About = () => (
-  <main class="main">
+  <main class="about">
     <h1 className="heading">O projektu</h1>
     <p className="text">
       Projekt Frontend English má za cíl podpořit studentky Digitální akademie

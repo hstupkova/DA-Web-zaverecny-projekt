@@ -1,4 +1,10 @@
 /* Introduction - text and picture*/
+
+.home {
+  margin: calc(var(--spacer) * 2) auto 0 auto;
+}
+
+
 .introduction {
   margin: var(--spacer) auto;
   padding-left: var(--spacer);

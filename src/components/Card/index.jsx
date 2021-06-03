@@ -1,18 +1,16 @@
 import React, {useState} from 'react';
 import './style.css';
 
-const Card = ({text, couple, play, disabled}) => {
-  const [selectedCard, setSelectedCard] = useState(false);
+const Card = ({text, couple, language, play, disabled, selected}) => {
 
   const handleClick = () => {
-    setSelectedCard(!selectedCard);
-    play(text, couple);
+    play(text, couple, language);
   };
 
   return (
     <button type="button" 
-      className={selectedCard ? "card card--selected" : "card"} 
-      disabled={disabled && !selectedCard}
+      className={selected ? "card card--selected" : "card"} 
+      disabled={disabled && !selected}
       onClick={handleClick}>{text}</button>
   );
 };

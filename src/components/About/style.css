@@ -1,5 +1,5 @@
-.main {
+.about {
   max-width: 700px;
-  margin: 0 auto;
+  margin: calc(var(--spacer) * 2) auto 0 auto;
 }
 
