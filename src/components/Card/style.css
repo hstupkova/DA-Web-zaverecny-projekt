@@ -6,17 +6,49 @@
   text-align: center;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
-  border: 2px solid var(--c-accent);
+  border: 0;
   padding: 2px;
 
-  cursor: pointer;
-}
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  padding: 2px;
 
-.card--empty {
-  border: 2px dotted var(--c-accent);
+  transition: 
+		background-color 0.5s, 
+		box-shadow 0.5s,
+		transform 0.5s;
 }
 
 .card--selected {
-  background-color: #FEE1BD;
+  box-shadow: 0px 0px 6px 2px #46606d;
+}
+
+.card--answered {
+  background-color: #f3f8ed;
+  color: lightgray;
+  transform: scale(0.9);
+}
+
+@keyframes shake {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(8deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  75% {
+    transform: rotateZ(-8deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+.card--wrong {
+  box-shadow: 0px 0px 6px 2px red;
+  animation: shake 100ms 5;
 }
