@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
+import { choice as choiceArray } from './choice';
 import './style.css';
 
 const Choice = () => {
   const [answer, setAnswer] = useState('');
   const [answerAccepted, setAnswerAccepted] = useState(null);
+  const [choiceIndex, setChoiceIndex] = useState(0);
+  const choice = choiceArray[choiceIndex];
 
   const handleChange = (event) => {
     setAnswer(event.target.value);
-    console.log(event.target.value);
   };
+
+  const rightAnswer = choice.options.find((item) => item.correct === true).word;
+
   const handleClick = () => {
-    answer === 'font weight'
-      ? setAnswerAccepted(true)
-      : setAnswerAccepted(false);
+    answer === rightAnswer ? setAnswerAccepted(true) : setAnswerAccepted(false);
+  };
+
+  const handleChoiceIndex = () => {
+    setChoiceIndex(choiceIndex + 1);
+    setAnswer('');
+    setAnswerAccepted(null);
   };
 
   return (
@@ -23,37 +32,14 @@ const Choice = () => {
           <p className="text">Zvol chybějící slovo ve větě.</p>
         </section>
         <section className="choice__assignement">
-          <p className="choice__sentence text">
-            Set a __________ to change the boldness of a font.
-          </p>
+          <p className="choice__sentence text">{choice.sentence}</p>
           <div className="text" onChange={handleChange}>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                id="answer1"
-                value="font size"
-              />
-              font size
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                id="answer2"
-                value="font style"
-              />
-              font style
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                id="answer3"
-                value="font weight"
-              />
-              font weight
-            </label>
+            {choice.options.map((item) => (
+              <label key={item.word}>
+                <input type="radio" name="answer" value={item.word} />
+                {item.word}
+              </label>
+            ))}
           </div>
         </section>
         <section className="choice__feedback">
@@ -77,8 +63,8 @@ const Choice = () => {
               alt="bad answer"
             />
             <p className="choice__solution text">
-              Správná odpověď je:
-              <span className="choice__solution--bold"> font weight</span>.
+              Správná odpověď je:{' '}
+              <span className="choice__solution--bold">{rightAnswer}</span>.
             </p>
           </div>
         </section>
@@ -101,6 +87,7 @@ const Choice = () => {
                 : 'choice__button'
             }
             disabled={answerAccepted === null ? true : false}
+            onClick={handleChoiceIndex}
           >
             Další věta
           </button>
