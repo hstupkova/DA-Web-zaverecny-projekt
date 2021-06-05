@@ -8,15 +8,14 @@ import isEqual from 'lodash/isEqual';
 import xorWith from 'lodash/xorWith';
 
 const Pairs = () => {
+  const [numberOfPairs] = useState(window.matchMedia('(min-width: 576px)').matches ? 12 : 9);
   const [wordsCS, setWordsCS] = useState([]);
   const [wordsEN, setWordsEN] = useState([]);
   const [cardsSelected, setCardsSelected] = useState([]);
+  const [cardsAnswered, setCardsAnswered] = useState([]);
+  const [cardsWrong, setCardsWrong] = useState([]);
 
   useEffect(() => {
-    let numberOfPairs = 9;
-    const mq = window.matchMedia('(min-width: 576px)');
-    if (mq.matches) { numberOfPairs = 12; }
-
     const pairsShuffled = shuffleArray(pairs);
 
     const pairsToDisplay = pairsShuffled.slice(0, numberOfPairs);
@@ -28,18 +27,42 @@ const Pairs = () => {
 
   const play = (word, couple, language) => {
     const currentCard = {word: word, couple: couple, language: language};
-    setCardsSelected(xorWith(cardsSelected, [currentCard], isEqual));
+    const newCardsSelected = xorWith(cardsSelected, [currentCard], isEqual);
+    setCardsSelected(newCardsSelected);
+
+    if (newCardsSelected.length === 2 && 
+      newCardsSelected[0]['word'] === newCardsSelected[1]['couple']) {
+        setCardsAnswered(cardsAnswered.concat(newCardsSelected))
+        setCardsSelected([]);
+    } else if (newCardsSelected.length === 2 && 
+      newCardsSelected[0]['word'] !== newCardsSelected[1]['couple']) {
+        setCardsWrong(cardsWrong.concat(newCardsSelected));
+    }
   }
 
   useEffect(() => {
     console.log('cardsSelected:');
     console.log(cardsSelected);
-    if (cardsSelected.length === 2 && cardsSelected[0]['word'] === cardsSelected[1]['couple']) {
-      alert('hurá');
-    } else if (cardsSelected.length === 2 && cardsSelected[0]['word'] !== cardsSelected[1]['couple']) {
-      alert('zkus to znova');
+    let timerId;
+    if (cardsSelected.length === 2 && 
+      cardsSelected[0]['word'] !== cardsSelected[1]['couple']) {
+      timerId = setTimeout(() => {
+        setCardsSelected([]);
+        setCardsWrong([]);
+      }, 500);
     }
+
+    return () => {timerId && clearTimeout(timerId)};
   }, [cardsSelected]);
+
+  useEffect(() => {
+    console.log('cardsAnswered:');
+    console.log(cardsAnswered);
+
+    if (cardsAnswered.length === numberOfPairs * 2) {
+      alert('konec hry!');
+    };
+  }, [cardsAnswered]);
 
   return (
     <main className="pairs">
@@ -50,7 +73,7 @@ const Pairs = () => {
 
       <section className="pairs__game">
         <div className="game__button-wrapper">
-          <button className="button">Nová hra</button>
+          <button className="pairs__button">Nová hra</button>
         </div>
 
         <div className="game__wrapper">
@@ -64,7 +87,9 @@ const Pairs = () => {
                   language={item.language}
                   play={play}
                   disabled={cardsSelected.length === 2}
-                  selected={cardsSelected.some(card => isEqual(card, item))} />)
+                  selected={cardsSelected.some(card => isEqual(card, item))}
+                  answered={cardsAnswered.some(card => isEqual(card, item))}
+                  wrong={cardsWrong.some(card => isEqual(card, item))} />)
             }
             
           </div>
@@ -78,7 +103,9 @@ const Pairs = () => {
                   language={item.language}
                   play={play}
                   disabled={cardsSelected.length === 2}
-                  selected={cardsSelected.some(card => isEqual(card, item))} />)
+                  selected={cardsSelected.some(card => isEqual(card, item))}
+                  answered={cardsAnswered.some(card => isEqual(card, item))}
+                  wrong={cardsWrong.some(card => isEqual(card, item))} />)
             }
           </div>
         </div>
