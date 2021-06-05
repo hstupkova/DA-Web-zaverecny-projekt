@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <p className="footer__text">Vyrobeno s 🖤 pro Czechitas, 2021</p>
       <p className="footer__text">
-        Technology vector created by <a href="https://www.freepik.com/vectors/technology">pikisuperstar</a>
+        Technology vector created by <a href="https://www.freepik.com/vectors/technology">pikisuperstar</a> | Quote vector created by <a href="https://www.freepik.com/vectors/quote">freepik</a>
       </p>
     </footer>
   );

@@ -86,7 +86,8 @@
 }
 
 .pairs__button {
-  background-color: #aacd7e;
+  /*background-color: #aacd7e;*/
+  background-color: #4FC4C2;
   font-size: 1rem;
   padding: 1rem;
   width: 135px;
@@ -135,14 +136,30 @@
   padding: var(--spacer);
   margin: 0 var(--spacer);
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   animation: display 250ms;
+}
+
+.gameover__pic {
+  display: flex;
+  justify-content: center;
+}
+
+.gameover__pic img {
+  display: block;
+  max-width: 80%;
+  position: relative;
+  left: 10px;
 }
 
 .gameover__text {
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
-  margin: 0 0 var(--spacer) 0;
+  margin: var(--spacer) 0 calc(var(--spacer) / 2);
 }
 
 .gameover__mistakes {

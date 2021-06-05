@@ -131,6 +131,9 @@ const Pairs = () => {
             (cardsAnswered.length === numberOfPairs * 2) &&
             <div className="gameover">
             <div className="gameover__content">
+              <div className="gameover__pic">
+                <img src="./assets/nice-work.svg" alt="nice work" />
+              </div>
               <p className="gameover__text">Hurá, vyhrál jsi!</p>
               <p className="gameover__mistakes">
                 {mistakes === 0
