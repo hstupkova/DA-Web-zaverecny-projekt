@@ -64,16 +64,6 @@ const Pairs = () => {
     return () => {timerId && clearTimeout(timerId)};
   }, [cardsSelected]);
 
-  useEffect(() => {
-    console.log('cardsAnswered:');
-    console.log(cardsAnswered);
-
-    /*
-    if (cardsAnswered.length === numberOfPairs * 2) {
-      alert('konec hry!');
-    };*/
-  }, [cardsAnswered]);
-
   return (
     <main className="pairs">
       <section className="pairs__text">
@@ -96,7 +86,8 @@ const Pairs = () => {
                   couple={item.couple}
                   language={item.language}
                   play={play}
-                  disabled={cardsSelected.length === 2}
+                  disabled={wordsEN.some(card => 
+                    isEqual(card, cardsSelected[0]))}
                   selected={cardsSelected.some(card => isEqual(card, item))}
                   answered={cardsAnswered.some(card => isEqual(card, item))}
                   wrong={cardsWrong.some(card => isEqual(card, item))} />)
@@ -112,7 +103,8 @@ const Pairs = () => {
                   couple={item.couple}
                   language={item.language}
                   play={play}
-                  disabled={cardsSelected.length === 2}
+                  disabled={wordsCS.some(card => 
+                    isEqual(card, cardsSelected[0]))}
                   selected={cardsSelected.some(card => isEqual(card, item))}
                   answered={cardsAnswered.some(card => isEqual(card, item))}
                   wrong={cardsWrong.some(card => isEqual(card, item))} />)
