@@ -15,7 +15,7 @@ const Pairs = () => {
   const [cardsAnswered, setCardsAnswered] = useState([]);
   const [cardsWrong, setCardsWrong] = useState([]);
 
-  useEffect(() => {
+  const newGame = () => {
     const pairsShuffled = shuffleArray(pairs);
 
     const pairsToDisplay = pairsShuffled.slice(0, numberOfPairs);
@@ -23,7 +23,13 @@ const Pairs = () => {
     setWordsCS(shuffleArray(pairsCS));
     const pairsEN = pairsToDisplay.map(item => { return {word: item.en, couple: item.cs, language: 'en'}});
     setWordsEN(shuffleArray(pairsEN));
-  }, []);
+  };
+
+  const handleClick = () => {
+    newGame();
+  };
+
+  useEffect(newGame, []);
 
   const play = (word, couple, language) => {
     const currentCard = {word: word, couple: couple, language: language};
@@ -73,7 +79,7 @@ const Pairs = () => {
 
       <section className="pairs__game">
         <div className="game__button-wrapper">
-          <button className="pairs__button">Nová hra</button>
+          <button className="pairs__button" onClick={handleClick}>Nová hra</button>
         </div>
 
         <div className="game__wrapper">

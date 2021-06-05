@@ -30,6 +30,10 @@
   transform: scale(0.9);
 }
 
+.card:disabled {
+  cursor: default;
+}
+
 @keyframes shake {
   0% {
     transform: rotateZ(0deg);

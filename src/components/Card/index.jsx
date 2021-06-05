@@ -9,7 +9,7 @@ const Card = ({word, couple, language, play, disabled, selected, answered, wrong
 
   let classNameText = "card";
   if (selected) {
-    classNameText = classNameText + " card--selected";
+    classNameText += " card--selected";
   }
 
   if (answered) {

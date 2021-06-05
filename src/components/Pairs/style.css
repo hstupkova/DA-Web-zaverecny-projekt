@@ -88,4 +88,5 @@
   border-radius: 10px;
   text-transform: uppercase;
   color: var(--c-accent);
+  cursor: pointer;
 }
