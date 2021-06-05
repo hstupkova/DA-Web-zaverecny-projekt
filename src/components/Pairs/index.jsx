@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './style.css';
 
 import Card from '../Card';
+import Button from '../Button';
 import { pairs } from './pairs.js';
 import { shuffleArray } from '../../library/shuffleArray';
 import isEqual from 'lodash/isEqual';
@@ -76,7 +77,8 @@ const Pairs = () => {
 
       <section className="pairs__game">
         <div className="game__button-wrapper">
-          <button className="pairs__button" onClick={handleClick}>Nová hra</button>
+          <Button page="pairs" onClick={handleClick}>
+            Nová hra</Button>
         </div>
 
         {
@@ -141,7 +143,9 @@ const Pairs = () => {
                   : `Netrefil ses ${mistakes}x.`}
               </p>
               <div className="game__button-wrapper">
-                <button className="pairs__button" onClick={handleClick}>Nová hra</button>
+                <Button
+                  page="pairs"
+                  onClick={handleClick}>Nová hra</Button>
               </div>
             </div>
           </div>

@@ -1,0 +1,36 @@
+.btn {
+  font-size: 1rem;
+  padding: 1rem;
+  width: 135px;
+  border: 0;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn--pairs {
+  background-color: #4FC4C2;
+  color: var(--c-font-light);
+}
+
+.btn--audio {
+  background-color: #a6dae8;
+  color: var(--c-accent);
+}
+
+.btn--audio:disabled {
+  color: var(--c-font-light);
+  background-color: #cdecfe;
+  cursor: default;
+}
+
+.btn--choice {
+  background-color: #00dfc0;
+  color: var(--c-accent);
+}
+
+.btn--choice:disabled {
+  color: var(--c-font-light);
+  background-color: #d3faf5;
+  cursor: default;
+}

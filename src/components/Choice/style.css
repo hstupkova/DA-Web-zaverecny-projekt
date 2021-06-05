@@ -58,21 +58,18 @@ label {
 
 /* navigation */
 .choice__button {
-  background-color: #00dfc0;
-  font-size: 1rem;
-  margin: 1rem;
-  padding: 1rem;
-  width: 135px;
-  border: 2px solid var(--c-accent);
-  border-radius: 10px;
-  text-transform: uppercase;
-  color: var(--c-accent);
+  margin-bottom: var(--spacer);
 }
 
-.choice__button--disabled {
-  color: var(--c-font-light);
-  background-color: #d3faf5;
-  border: none;
+@media screen and (min-width: 576px) {
+  .choice__buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .choice__button:not(:last-child) {
+    margin-right: var(--spacer);
+  }
 }
 
 /* picture */

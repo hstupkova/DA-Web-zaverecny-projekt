@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { choice as choiceArray } from './choice';
+import Button from "../Button";
 import './style.css';
 
 const Choice = () => {
@@ -69,28 +70,16 @@ const Choice = () => {
           </div>
         </section>
         <nav className="choice__buttons">
-          <button
-            className={
-              answerAccepted === null
-                ? 'choice__button'
-                : 'choice__button choice__button--disabled'
-            }
-            disabled={answerAccepted === null ? false : true}
-            onClick={handleClick}
-          >
-            Vyhodnotit
-          </button>
-          <button
-            className={
-              answerAccepted === null
-                ? 'choice__button choice__button--disabled'
-                : 'choice__button'
-            }
-            disabled={answerAccepted === null ? true : false}
-            onClick={handleChoiceIndex}
-          >
-            Další věta
-          </button>
+          <div className="choice__button">
+            <Button page="choice" 
+              disabled={answerAccepted === null ? false : true}
+              onClick={handleClick}>Vyhodnotit</Button>
+          </div>
+          <div className="listening__button">
+            <Button page="choice" 
+              disabled={answerAccepted === null ? true : false}
+              onClick={handleChoiceIndex}>Další věta</Button>
+          </div>
         </nav>
         <img
           className="choice__programmer"

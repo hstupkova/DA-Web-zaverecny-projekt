@@ -59,21 +59,18 @@ input[type='text'] {
 
 /* navigation */
 .listening__button {
-  background-color: #a6dae8;
-  font-size: 1rem;
-  margin: 2rem;
-  padding: 1rem;
-  width: 135px;
-  border: 2px solid var(--c-accent);
-  border-radius: 10px;
-  text-transform: uppercase;
-  color: var(--c-accent);
+  margin-bottom: var(--spacer);
 }
 
-.listening__button--disabled {
-  color: var(--c-font-light);
-  background-color: #cdecfe;
-  border: none;
+@media screen and (min-width: 576px) {
+  .listening__buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .listening__button:not(:last-child) {
+    margin-right: var(--spacer);
+  }
 }
 
 /* picture */

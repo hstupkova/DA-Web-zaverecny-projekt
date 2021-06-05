@@ -84,20 +84,19 @@
   }
   
 }
-
+/*
 .pairs__button {
-  /*background-color: #aacd7e;*/
   background-color: #4FC4C2;
   font-size: 1rem;
   padding: 1rem;
   width: 135px;
-  border: 2px solid var(--c-accent);
+  border: 2px solid white;
   border-radius: 10px;
   text-transform: uppercase;
-  color: var(--c-accent);
+  color: white;
   cursor: pointer;
 }
-
+*/
 /* End of game */
 @keyframes display {
   0% {

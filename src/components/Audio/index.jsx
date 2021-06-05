@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useSound from 'use-sound';
 import { audio as audioArray } from './audio';
+import Button from '../Button';
 
 import './style.css';
 
@@ -82,28 +83,16 @@ const Audio = () => {
               </p>
             </section>
             <nav className="listening__buttons">
-              <button
-                className={
-                  answerAccepted === null
-                    ? 'listening__button'
-                    : 'listening__button listening__button--disabled'
-                }
-                disabled={answerAccepted === null ? false : true}
-                onClick={handleClick}
-              >
-                Vyhodnotit
-              </button>
-              <button
-                className={
-                  answerAccepted === null
-                    ? 'listening__button listening__button--disabled'
-                    : 'listening__button'
-                }
-                disabled={answerAccepted === null ? true : false}
-                onClick={handleAudioIndex}
-              >
-                Další věta
-              </button>
+              <div className="listening__button">
+                <Button page="audio" 
+                  disabled={answerAccepted === null ? false : true}
+                  onClick={handleClick}>Vyhodnotit</Button>
+              </div>
+              <div className="listening__button">
+                <Button page="audio" 
+                  disabled={answerAccepted === null ? true : false}
+                  onClick={handleAudioIndex}>Další věta</Button>
+              </div>
             </nav>
           </div>
         )}
