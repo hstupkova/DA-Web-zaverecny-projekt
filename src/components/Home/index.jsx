@@ -5,7 +5,7 @@ import Activity from '../Activity';
 import { activities } from './activities.js';
 
 const Home = () => (
-  <main class="home">
+  <main className="home">
     <h1 className="heading">Frontend English</h1>
 
     <section className="introduction">
@@ -27,8 +27,8 @@ const Home = () => (
       <div className="activities__list">
         {
           activities.map(item => { return (
-              <div class="activities__list-item">
-                <Activity key={item.id}
+              <div className="activities__list-item" key={item.id}>
+                <Activity
                   name={item.name}
                   text={item.text}
                   path={item.path}
