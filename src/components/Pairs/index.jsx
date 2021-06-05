@@ -26,6 +26,9 @@ const Pairs = () => {
   };
 
   const handleClick = () => {
+    setCardsAnswered([]);
+    setCardsSelected([]);
+    setCardsWrong([]);
     newGame();
   };
 
@@ -65,9 +68,10 @@ const Pairs = () => {
     console.log('cardsAnswered:');
     console.log(cardsAnswered);
 
+    /*
     if (cardsAnswered.length === numberOfPairs * 2) {
       alert('konec hry!');
-    };
+    };*/
   }, [cardsAnswered]);
 
   return (
@@ -114,6 +118,19 @@ const Pairs = () => {
                   wrong={cardsWrong.some(card => isEqual(card, item))} />)
             }
           </div>
+
+          {
+            (cardsAnswered.length === numberOfPairs * 2) &&
+            <div className="gameover">
+            <div className="gameover__content">
+              <p className="gameover__text">Hurá, vyhráli jste!</p>
+              <div className="game__button-wrapper">
+                <button className="pairs__button" onClick={handleClick}>Nová hra</button>
+              </div>
+            </div>
+          </div>
+          }
+          
         </div>
       </section>
 

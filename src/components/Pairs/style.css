@@ -81,7 +81,6 @@
 .pairs__button {
   background-color: #aacd7e;
   font-size: 1rem;
-  margin: 2rem;
   padding: 1rem;
   width: 135px;
   border: 2px solid var(--c-accent);
@@ -90,3 +89,44 @@
   color: var(--c-accent);
   cursor: pointer;
 }
+
+/* End of game */
+
+.game__wrapper {
+  position: relative;
+}
+
+.gameover {
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.gameover__content {
+  background-color: var(--c-bckgr-primary);
+  padding: var(--spacer);
+  margin: 0 var(--spacer);
+}
+
+.gameover__text {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 var(--spacer) 0;
+}
+
+@media screen and (min-width: 992px) {
+  .gameover {
+    max-width: 760px;
+  }
+}
+
