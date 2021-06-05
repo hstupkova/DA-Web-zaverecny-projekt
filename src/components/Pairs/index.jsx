@@ -14,6 +14,7 @@ const Pairs = () => {
   const [cardsSelected, setCardsSelected] = useState([]);
   const [cardsAnswered, setCardsAnswered] = useState([]);
   const [cardsWrong, setCardsWrong] = useState([]);
+  const [mistakes, setMistakes] = useState(0);
 
   const newGame = () => {
     const pairsShuffled = shuffleArray(pairs);
@@ -29,10 +30,13 @@ const Pairs = () => {
     setCardsAnswered([]);
     setCardsSelected([]);
     setCardsWrong([]);
+    setMistakes(0);
     newGame();
   };
 
-  useEffect(newGame, []);
+  useEffect(() => {
+    newGame();
+  }, []);
 
   const play = (word, couple, language) => {
     const currentCard = {word: word, couple: couple, language: language};
@@ -41,17 +45,16 @@ const Pairs = () => {
 
     if (newCardsSelected.length === 2 && 
       newCardsSelected[0]['word'] === newCardsSelected[1]['couple']) {
-        setCardsAnswered(cardsAnswered.concat(newCardsSelected))
+        setCardsAnswered(cardsAnswered.concat(newCardsSelected));
         setCardsSelected([]);
     } else if (newCardsSelected.length === 2 && 
       newCardsSelected[0]['word'] !== newCardsSelected[1]['couple']) {
         setCardsWrong(cardsWrong.concat(newCardsSelected));
+        setMistakes(mistakes + 1);
     }
   }
 
   useEffect(() => {
-    console.log('cardsSelected:');
-    console.log(cardsSelected);
     let timerId;
     if (cardsSelected.length === 2 && 
       cardsSelected[0]['word'] !== cardsSelected[1]['couple']) {
@@ -75,6 +78,19 @@ const Pairs = () => {
         <div className="game__button-wrapper">
           <button className="pairs__button" onClick={handleClick}>Nová hra</button>
         </div>
+
+        {
+          cardsAnswered.length / 2 !== numberOfPairs
+          ? <p className="game__score">
+              Uhodnuto {cardsAnswered.length / 2}/{numberOfPairs}. Chyb {mistakes}.
+            </p>
+          : <p className="game__score">
+              Konec hry. 
+                {mistakes === 0
+                  ? ' Uhodl jsi všechno napoprvé!'
+                  : ` ${mistakes}x ses netrefil.`}
+            </p>
+        }
 
         <div className="game__wrapper">
           <div className="game game--en">
@@ -115,7 +131,12 @@ const Pairs = () => {
             (cardsAnswered.length === numberOfPairs * 2) &&
             <div className="gameover">
             <div className="gameover__content">
-              <p className="gameover__text">Hurá, vyhráli jste!</p>
+              <p className="gameover__text">Hurá, vyhrál jsi!</p>
+              <p className="gameover__mistakes">
+                {mistakes === 0
+                  ? 'Uhodl jsi všechno napoprvé, jsi borec.'
+                  : `Netrefil ses ${mistakes}x.`}
+              </p>
               <div className="game__button-wrapper">
                 <button className="pairs__button" onClick={handleClick}>Nová hra</button>
               </div>

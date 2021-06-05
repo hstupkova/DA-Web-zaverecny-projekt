@@ -37,6 +37,13 @@
   margin-top: 15px;
 }
 
+.game__score {
+  text-align: center;
+  padding-left: var(--spacer);
+  padding-right: var(--spacer);
+  font-size: 1.25rem;
+}
+
 
 @media screen and (min-width: 576px) {
   .game {
@@ -91,6 +98,17 @@
 }
 
 /* End of game */
+@keyframes display {
+  0% {
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 .game__wrapper {
   position: relative;
@@ -113,14 +131,23 @@
 
 .gameover__content {
   background-color: var(--c-bckgr-primary);
+  border-radius: 10px;
   padding: var(--spacer);
   margin: 0 var(--spacer);
+
+  animation: display 250ms;
 }
 
 .gameover__text {
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
+  margin: 0 0 var(--spacer) 0;
+}
+
+.gameover__mistakes {
+  text-align: center;
+  font-size: 1.125rem;
   margin: 0 0 var(--spacer) 0;
 }
 
