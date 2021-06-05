@@ -17,40 +17,42 @@ const Navigation = () => {
         onClick={handleClick} />
         
       <div className={hamburger ? "menu__links menu--opened" : "menu__links"}>
-        <NavLink 
-          exact to="/" 
-          className="menu__item" 
-          activeClassName="menu__item--current">
-          Domů
-        </NavLink>
+        <div className="menu__inner">
+          <NavLink 
+            exact to="/" 
+            className="menu__item" 
+            activeClassName="menu__item--current">
+            Domů
+          </NavLink>
 
-        <NavLink 
-          to="/hledani-dvojic" 
-          className="menu__item" 
-          activeClassName="menu__item--current">
-          Hledání dvojic
-        </NavLink>
+          <NavLink 
+            to="/hledani-dvojic" 
+            className="menu__item" 
+            activeClassName="menu__item--current">
+            Hledání dvojic
+          </NavLink>
 
-        <NavLink 
-          to="/poslech" 
-          className="menu__item" 
-          activeClassName="menu__item--current">
-          Poslech
-        </NavLink>
+          <NavLink 
+            to="/poslech" 
+            className="menu__item" 
+            activeClassName="menu__item--current">
+            Poslech
+          </NavLink>
 
-        <NavLink 
-          to="/vyber-slov" 
-          className="menu__item" 
-          activeClassName="menu__item--current">
-          Výběr slov
-        </NavLink>
+          <NavLink 
+            to="/vyber-slov" 
+            className="menu__item" 
+            activeClassName="menu__item--current">
+            Výběr slov
+          </NavLink>
 
-        <NavLink 
-          to="/o-projektu" 
-          className="menu__item" 
-          activeClassName="menu__item--current">
-          O projektu
-        </NavLink>
+          <NavLink 
+            to="/o-projektu" 
+            className="menu__item" 
+            activeClassName="menu__item--current">
+            O projektu
+          </NavLink>
+        </div>
       </div>
     </nav>
   );

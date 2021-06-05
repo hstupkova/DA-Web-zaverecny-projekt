@@ -15,6 +15,7 @@
   background-color: transparent;
   background-image: url('./img/hamburger.svg');
   background-size: contain;
+  background-repeat: no-repeat;
   cursor: pointer;
   filter: invert(100%);
 }
@@ -25,6 +26,11 @@
   position: relative;
   display: none;
   min-width: 90%;
+}
+
+.menu__inner {
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .menu--opened {
@@ -51,13 +57,18 @@
     display: none;
   }
 
-  .menu__links {
-    flex-basis: 100%;
+  .menu {
+    display: block;
+  }
 
+  .menu__links {
+    display: block;
+    background-color: var(--c-bckgr-primary);
+  }
+
+  .menu__inner {
     display: flex;
     justify-content: space-around;
-
-    background-color: var(--c-bckgr-primary);
   }
 
   .menu__item {
