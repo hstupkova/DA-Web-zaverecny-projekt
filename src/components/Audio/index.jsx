@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 import { audio as audioArray } from './audio';
 import Button from '../Button';
@@ -10,7 +10,17 @@ const Audio = () => {
   const [answerAccepted, setAnswerAccepted] = useState(null);
   const [audioIndex, setAudioIndex] = useState(0);
   const audio = audioArray[audioIndex];
-  const [play] = useSound(`${audio?.path}`);
+  const [play, { stop, duration }] = useSound(`${audio?.path}`, {
+    interrupt: true,
+  });
+
+  // useEffect(() => {
+  //   console.log('start');
+  //   return () => {
+  //     console.log('Ahoj');
+  //     stop();
+  //   };
+  // }, []);
 
   const handleChange = (event) => {
     setAnswer(event.target.value);

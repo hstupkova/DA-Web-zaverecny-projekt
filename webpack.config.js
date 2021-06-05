@@ -20,13 +20,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.mp3$/,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-        },
-      },
-      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
