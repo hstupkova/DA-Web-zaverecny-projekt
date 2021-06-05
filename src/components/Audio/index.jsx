@@ -1,21 +1,30 @@
 import React, { useState } from 'react';
 import useSound from 'use-sound';
-import { audio } from './audio';
-import number1 from './records/number1.mp3';
+import { audio as audioArray } from './audio';
+
 import './style.css';
 
 const Audio = () => {
   const [answer, setAnswer] = useState('');
   const [answerAccepted, setAnswerAccepted] = useState(null);
-
-  const [play] = useSound(number1);
+  const [audioIndex, setAudioIndex] = useState(0);
+  const audio = audioArray[audioIndex];
+  const [play] = useSound(`${audio.path}`);
 
   const handleChange = (event) => {
-    setAnswer(event.target.value.toLowerCase());
+    setAnswer(event.target.value);
   };
 
   const handleClick = () => {
-    answer === 'length' ? setAnswerAccepted(true) : setAnswerAccepted(false);
+    answer.toLowerCase().trim() === `${audio.reply}`
+      ? setAnswerAccepted(true)
+      : setAnswerAccepted(false);
+  };
+
+  const handleAudioIndex = () => {
+    setAudioIndex(audioIndex + 1);
+    setAnswer('');
+    setAnswerAccepted(null);
   };
 
   return (
@@ -28,16 +37,22 @@ const Audio = () => {
           </p>
         </section>
         <section className="listening__assignement">
-          <p className="listening__sentence text">
-            The <input type="text" value={answer} onChange={handleChange} />
-            property of an array tells us how many elements it has.
-          </p>
           <img
             className="listening__speaker"
             src="./assets/speaker.svg"
             alt="speaker"
             onClick={play}
           />
+          <p className="listening__sentence text">
+            {audio.textA}{' '}
+            <input
+              autoFocus
+              type="text"
+              value={answer}
+              onChange={handleChange}
+            />
+            {audio.textB}
+          </p>
           <img
             className="listening__check"
             src="./assets/check.svg"
@@ -59,8 +74,8 @@ const Audio = () => {
             alt="bad answer"
           />
           <p className="listening__solution text">
-            Správná odpověď je:
-            <span className="listening__solution--bold"> length</span>.
+            Správná odpověď je:{' '}
+            <span className="listening__solution--bold">{audio.reply}</span>.
           </p>
         </section>
         <nav className="listening__buttons">
@@ -82,6 +97,7 @@ const Audio = () => {
                 : 'listening__button'
             }
             disabled={answerAccepted === null ? true : false}
+            onClick={handleAudioIndex}
           >
             Další věta
           </button>
