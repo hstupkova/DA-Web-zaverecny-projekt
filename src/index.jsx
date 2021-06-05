@@ -1,11 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './style.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -39,7 +35,6 @@ const App = () => (
       <Route path="/o-projektu">
         <About />
       </Route>
-
     </Switch>
 
     <Footer />
