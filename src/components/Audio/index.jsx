@@ -13,6 +13,7 @@ const Audio = () => {
   const [play, { stop, duration }] = useSound(`${audio?.path}`, {
     interrupt: true,
   });
+  const [points, setPoints] = useState(0);
 
   // useEffect(() => {
   //   console.log('start');
@@ -28,7 +29,7 @@ const Audio = () => {
 
   const handleClick = () => {
     answer.toLowerCase().trim() === `${audio.reply}`
-      ? setAnswerAccepted(true)
+      ? setAnswerAccepted(true) & setPoints(points + 1)
       : setAnswerAccepted(false);
   };
 
@@ -46,6 +47,7 @@ const Audio = () => {
           <p className="text">
             Poslechni si nahrávku a doplň chybějící slovo věty.
           </p>
+          <p className="text">Zodpovězeno správně {points}/15.</p>
         </section>
         {audio && (
           <div>
@@ -66,54 +68,76 @@ const Audio = () => {
                 />
                 {audio.textB}
               </p>
-              <img
-                className="listening__check"
-                src="./assets/check.svg"
-                alt="good answer"
-                style={{
-                  display: answerAccepted === true ? 'inline-block' : 'none',
-                }}
-              />
             </section>
-            <section
-              className="listening__feedback--negative text"
-              style={{
-                display: answerAccepted === false ? 'inline-block' : 'none',
-              }}
-            >
-              <img
-                className="listening__cross"
-                src="./assets/cross.svg"
-                alt="bad answer"
-              />
-              <p className="listening__solution text">
-                Správná odpověď je:{' '}
-                <span className="listening__solution--bold">{audio.reply}</span>
-                .
-              </p>
+            <section className="listening__feedback">
+              {answerAccepted ? (
+                <img
+                  className="listening__check"
+                  src="./assets/check.svg"
+                  alt="good answer"
+                />
+              ) : null}
+              {!answerAccepted ? (
+                <div
+                  className="listening__feedback--negative"
+                  style={{
+                    display: answerAccepted === false ? 'inline-block' : 'none',
+                  }}
+                >
+                  <img
+                    className="listening__cross"
+                    src="./assets/cross.svg"
+                    alt="bad answer"
+                  />
+                  <p className="listening__solution text">
+                    Správná odpověď je:{' '}
+                    <span className="listening__solution--bold">
+                      {audio.reply}
+                    </span>
+                    .
+                  </p>
+                </div>
+              ) : null}
             </section>
             <nav className="listening__buttons">
               <div className="listening__button">
-                <Button page="audio" 
+                <Button
+                  page="audio"
                   disabled={answerAccepted === null ? false : true}
-                  onClick={handleClick}>Vyhodnotit</Button>
+                  onClick={handleClick}
+                >
+                  Vyhodnotit
+                </Button>
               </div>
               <div className="listening__button">
-                <Button page="audio" 
+                <Button
+                  page="audio"
                   disabled={answerAccepted === null ? true : false}
-                  onClick={handleAudioIndex}>Další věta</Button>
+                  onClick={handleAudioIndex}
+                >
+                  Další věta
+                </Button>
               </div>
             </nav>
+            <img
+              className="listening__programmer"
+              src="./assets/programmer-working-desk.jpg"
+              alt="programmer listening to music"
+            />
           </div>
         )}
         <div className="listening__result">
-          {audioIndex >= audioArray.length && <p>Jsi v cíli!</p>}
+          {audioIndex >= audioArray.length && (
+            <div>
+              <p className="listening__result--big">Jsi v cíli!</p>
+              <img
+                className="listening__victory"
+                src="./assets/finish-listening.jpg"
+                alt="woman celebrating victory"
+              />
+            </div>
+          )}
         </div>
-        <img
-          className="listening__programmer"
-          src="./assets/programmer-working-desk.jpg"
-          alt="programmer listening to music"
-        />
       </main>
     </>
   );

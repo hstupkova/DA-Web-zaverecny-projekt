@@ -14,17 +14,18 @@
   text-align: center;
   display: inline-block;
   line-height: 2.5rem;
+  margin: 2rem 0;
 }
 
 input[type='text'] {
   padding: 0.5rem 0.5rem;
   border: 2px solid var(--c-accent);
   border-radius: 5px;
-  margin: 0.5rem;
+  margin: 0 0.5rem;
 }
 
 .listening__feedback--negative {
-  flex-basis: 100%;
+  margin-bottom: 2rem;
 }
 
 .listening__solution--bold {
@@ -38,16 +39,17 @@ input[type='text'] {
 /* icons */
 .listening__speaker {
   border-radius: 50%;
-  vertical-align: middle;
+  display: block;
+  margin: auto;
   min-height: 3rem;
 }
 
 .listening__check {
   background-color: #028c87;
   border-radius: 50%;
-  vertical-align: middle;
   min-height: 3rem;
-  margin: 1rem 1rem;
+  margin: auto;
+  margin-bottom: 2rem;
 }
 
 .listening__cross {
@@ -76,9 +78,15 @@ input[type='text'] {
 /* picture */
 .listening__programmer {
   border-radius: 10px;
+  max-width: 90%;
 }
 
-.listening__result {
+.listening__result--big {
   font-weight: bold;
   font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.listening__victory {
+  max-width: 90%;
 }
