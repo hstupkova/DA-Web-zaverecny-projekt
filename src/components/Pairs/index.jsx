@@ -7,6 +7,7 @@ import { pairs } from './pairs.js';
 import { shuffleArray } from '../../library/shuffleArray';
 import isEqual from 'lodash/isEqual';
 import xorWith from 'lodash/xorWith';
+import niceWork from './img/nice-work.svg';
 
 const Pairs = () => {
   const [numberOfPairs] = useState(window.matchMedia('(min-width: 576px)').matches ? 12 : 9);
@@ -72,7 +73,7 @@ const Pairs = () => {
     <main className="pairs">
       <section className="pairs__text">
         <h1 className="heading">Hledání dvojic</h1>
-        <p className="text">Hledej kartičky, které k sobě patří! Na některých kartičkách jsou anglické termíny, na jiných jejich české překlady. Označ, které dvě označují tu samou věc, a sbírej body. Kliknutím na tlačítko Nová hra si nech kartičky rozdat znovu. Good luck!</p>
+        <p className="text">Hledej kartičky, které k sobě patří! Na některých kartičkách jsou anglické termíny, na jiných jejich české překlady. Označ, které dvě označují tu samou věc. Kliknutím na tlačítko Nová hra si nech kartičky rozdat znovu. Good luck!</p>
       </section>
 
       <section className="pairs__game">
@@ -89,8 +90,8 @@ const Pairs = () => {
           : <p className="game__score">
               Konec hry. 
                 {mistakes === 0
-                  ? ' Uhodl jsi všechno napoprvé!'
-                  : ` ${mistakes}x ses netrefil.`}
+                  ? ' Uhodla jsi všechno napoprvé!'
+                  : ` ${mistakes}x ses netrefila.`}
             </p>
         }
 
@@ -134,12 +135,12 @@ const Pairs = () => {
             <div className="gameover">
             <div className="gameover__content">
               <div className="gameover__pic">
-                <img src="./assets/nice-work.svg" alt="nice work" />
+                <img src={niceWork} alt="nice work" />
               </div>
-              <p className="gameover__text">Hurá, vyhrál jsi!</p>
+              <p className="gameover__text">Hurá, vyhrála jsi!</p>
               <p className="gameover__mistakes">
                 {mistakes === 0
-                  ? 'Uhodl jsi všechno napoprvé, jsi borec.'
+                  ? 'Uhodla jsi všechno napoprvé, jsi dobrá 👍'
                   : `Netrefil ses ${mistakes}x.`}
               </p>
               <div className="game__button-wrapper">

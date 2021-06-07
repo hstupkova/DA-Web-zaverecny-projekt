@@ -2,12 +2,12 @@ import React from 'react';
 import './style.css';
 
 const About = () => (
-  <main class="about">
+  <main className="about">
     <h1 className="heading">O projektu</h1>
     <p className="text">
       Projekt Frontend English má za cíl podpořit studentky Digitální akademie
-      Czechitas, které se chtějí stát front-end web vývojářkami, na jejich cestě
-      za vysněnou prací. Nabízená cvičení umožňují zlepšit si slovní zásobu a
+      Czechitas, které se chtějí stát front-end vývojářkami, na jejich cestě
+      za vysněnou prací. Nabízená cvičení pomáhají zlepšit si slovní zásobu a
       zároveň poskytují možnost si i otestovat základní znalosti z UX, HTML,
       CSS, JavaScriptu a Reactu.
     </p>

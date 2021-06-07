@@ -81,12 +81,12 @@ const Choice = () => {
             <nav className="choice__buttons">
               <div className="choice__button">
                 <Button page="choice" 
-                  disabled={answerAccepted === null ? false : true}
+                  disabled={answerAccepted !== null }
                   onClick={handleClick}>Vyhodnotit</Button>
               </div>
               <div className="listening__button">
                 <Button page="choice" 
-                  disabled={answerAccepted === null ? true : false}
+                  disabled={answerAccepted === null}
                   onClick={handleChoiceIndex}>Další věta</Button>
               </div>
             </nav>

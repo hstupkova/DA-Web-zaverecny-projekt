@@ -103,7 +103,7 @@ const Audio = () => {
               <div className="listening__button">
                 <Button
                   page="audio"
-                  disabled={answerAccepted === null ? false : true}
+                  disabled={answerAccepted !== null}
                   onClick={handleClick}
                 >
                   Vyhodnotit
@@ -112,7 +112,7 @@ const Audio = () => {
               <div className="listening__button">
                 <Button
                   page="audio"
-                  disabled={answerAccepted === null ? true : false}
+                  disabled={answerAccepted === null}
                   onClick={handleAudioIndex}
                 >
                   Další věta
