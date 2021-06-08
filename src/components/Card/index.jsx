@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import classNames from 'classnames';
 
 const Card = ({word, couple, language, play, disabled, selected, answered, wrong}) => {
 
@@ -7,18 +8,12 @@ const Card = ({word, couple, language, play, disabled, selected, answered, wrong
     play(word, couple, language);
   };
 
-  let classNameText = "card";
-  if (selected) {
-    classNameText += " card--selected";
-  }
-
-  if (answered) {
-    classNameText = "card card--answered";
-  }
-
-  if (wrong) {
-    classNameText = "card card--wrong";
-  }
+  const classNameText = classNames({
+    'card': true,
+    'card--selected': selected,
+    'card--answered': answered,
+    'card--wrong': wrong
+  });
 
   return (
     <button type="button" 
