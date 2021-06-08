@@ -78,10 +78,9 @@ const Choice = () => {
 
             <nav className="choice__buttons">
               <div className="choice__button">
-<<<<<<< HEAD
                 <Button
                   page="choice"
-                  disabled={answerAccepted === null ? false : true}
+                  disabled={answerAccepted !== null}
                   onClick={handleClick}
                 >
                   Vyhodnotit
@@ -90,21 +89,11 @@ const Choice = () => {
               <div className="listening__button">
                 <Button
                   page="choice"
-                  disabled={answerAccepted === null ? true : false}
+                  disabled={answerAccepted === null}
                   onClick={handleChoiceIndex}
                 >
                   Další věta
                 </Button>
-=======
-                <Button page="choice" 
-                  disabled={answerAccepted !== null }
-                  onClick={handleClick}>Vyhodnotit</Button>
-              </div>
-              <div className="listening__button">
-                <Button page="choice" 
-                  disabled={answerAccepted === null}
-                  onClick={handleChoiceIndex}>Další věta</Button>
->>>>>>> c2fddba6b67f4e8c8751bf7343d458dc9de077d8
               </div>
             </nav>
             <img
