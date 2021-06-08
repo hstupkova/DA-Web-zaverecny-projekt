@@ -41,9 +41,9 @@ const Choice = () => {
           <div>
             <section className="choice__assignement">
               <p className="choice__sentence text">{choice.sentence}</p>
-              <div className="text" onChange={handleChange}>
+              <div className="choice__options text" onChange={handleChange}>
                 {choice.options.map((item) => (
-                  <label key={item.word}>
+                  <label key={item.word} className="choice__label">
                     <input type="radio" name="answer" value={item.word} />
                     {item.word}
                   </label>
@@ -98,7 +98,7 @@ const Choice = () => {
             </nav>
             <img
               className="choice__programmer"
-              src="./assets/programmer-on-pc.jpg"
+              src="./assets/programmer-on-pc.svg"
               alt="programmer sitting on a laptop"
             />
           </div>
@@ -108,7 +108,7 @@ const Choice = () => {
             <p className="choice__result--big">Jsi v cíli!</p>
             <img
               className="choice__victory"
-              src="./assets/finish-choice.jpg"
+              src="./assets/finish-choice.svg"
               alt="woman looking in the mirror"
             />
           </div>

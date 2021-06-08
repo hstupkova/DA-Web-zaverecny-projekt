@@ -10,11 +10,15 @@
   padding-right: var(--spacer);
 }
 
+.listening__assignement {
+  margin-top: calc(var(--spacer) * 2);
+}
+
 .listening__sentence {
   text-align: center;
   display: inline-block;
   line-height: 2.5rem;
-  margin: 2rem 0;
+  margin: 1rem 0 2rem 0;
 }
 
 input[type='text'] {

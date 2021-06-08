@@ -50,7 +50,7 @@ const Audio = () => {
           <p className="text">Zodpovězeno správně {points}/15.</p>
         </section>
         {audio && (
-          <div>
+          <>
             <section className="listening__assignement">
               <img
                 className="listening__speaker"
@@ -116,10 +116,10 @@ const Audio = () => {
             </nav>
             <img
               className="listening__programmer"
-              src="./assets/programmer-working-desk.jpg"
+              src="./assets/programmer-working-desk.svg"
               alt="programmer listening to music"
             />
-          </div>
+          </>
         )}
         {audioIndex >= audioArray.length && (
           <div className="listening__result">
