@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { choice as choiceArray } from './choice';
-import Button from "../Button";
+import Button from '../Button';
 import './style.css';
 
 const Choice = () => {
@@ -8,6 +8,7 @@ const Choice = () => {
   const [answerAccepted, setAnswerAccepted] = useState(null);
   const [choiceIndex, setChoiceIndex] = useState(0);
   const choice = choiceArray[choiceIndex];
+  const [points, setPoints] = useState(0);
 
   const handleChange = (event) => {
     setAnswer(event.target.value);
@@ -18,7 +19,7 @@ const Choice = () => {
 
   const handleClick = () => {
     answer === isRightAnswer()
-      ? setAnswerAccepted(true)
+      ? setAnswerAccepted(true) & setPoints(points + 1)
       : setAnswerAccepted(false);
   };
 
@@ -34,6 +35,7 @@ const Choice = () => {
         <section className="choice__text">
           <h1 className="heading">Výběr slov</h1>
           <p className="text">Zvol chybějící slovo ve větě.</p>
+          <p className="text">Zodpovězeno správně {points}/16.</p>
         </section>
         {choice && (
           <div>
@@ -49,57 +51,68 @@ const Choice = () => {
               </div>
             </section>
             <section className="choice__feedback">
-              <img
-                className="choice__check"
-                src="./assets/check.svg"
-                alt="good answer"
-                style={{
-                  display: answerAccepted === true ? 'inline-block' : 'none',
-                }}
-              />
-              <div
-                className="choice__feedback--negative"
-                style={{
-                  display: answerAccepted === false ? 'inline-block' : 'none',
-                }}
-              >
+              {answerAccepted ? (
                 <img
-                  className="choice__cross"
-                  src="./assets/cross.svg"
-                  alt="bad answer"
+                  className="choice__check"
+                  src="./assets/check.svg"
+                  alt="good answer"
                 />
-                <p className="choice__solution text">
-                  Správná odpověď je:{' '}
-                  <span className="choice__solution--bold">
-                    {isRightAnswer()}
-                  </span>
-                  .
-                </p>
-              </div>
+              ) : null}
+              {answerAccepted === false ? (
+                <div className="choice__feedback--negative">
+                  <img
+                    className="choice__cross"
+                    src="./assets/cross.svg"
+                    alt="bad answer"
+                  />
+                  <p className="choice__solution text">
+                    Správná odpověď je:{' '}
+                    <span className="choice__solution--bold">
+                      {isRightAnswer()}
+                    </span>
+                    .
+                  </p>
+                </div>
+              ) : null}
             </section>
-            
+
             <nav className="choice__buttons">
               <div className="choice__button">
-                <Button page="choice" 
+                <Button
+                  page="choice"
                   disabled={answerAccepted === null ? false : true}
-                  onClick={handleClick}>Vyhodnotit</Button>
+                  onClick={handleClick}
+                >
+                  Vyhodnotit
+                </Button>
               </div>
               <div className="listening__button">
-                <Button page="choice" 
+                <Button
+                  page="choice"
                   disabled={answerAccepted === null ? true : false}
-                  onClick={handleChoiceIndex}>Další věta</Button>
+                  onClick={handleChoiceIndex}
+                >
+                  Další věta
+                </Button>
               </div>
             </nav>
+            <img
+              className="choice__programmer"
+              src="./assets/programmer-on-pc.jpg"
+              alt="programmer sitting on a laptop"
+            />
           </div>
         )}
-        <div className="choice__result">
-          {choiceIndex >= choiceArray.length && <p>Jsi v cíli!</p>}
-        </div>
-        <img
-          className="choice__programmer"
-          src="./assets/programmer-on-pc.jpg"
-          alt="programmer sitting on a laptop"
-        />
+        {choiceIndex >= choiceArray.length && (
+          <div className="choice__result">
+            <p className="choice__result--big">Jsi v cíli!</p>
+            <img
+              className="choice__victory"
+              src="./assets/finish-choice.jpg"
+              alt="woman looking in the mirror"
+            />
+          </div>
+        )}
       </main>
     </>
   );

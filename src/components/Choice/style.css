@@ -26,7 +26,7 @@ label {
 
 /* feedback */
 .choice__feedback {
-  flex-basis: 100%;
+  margin: 2rem;
 }
 
 .choice__solution {
@@ -41,9 +41,7 @@ label {
 .choice__check {
   background-color: #00dfc0;
   border-radius: 50%;
-  vertical-align: middle;
-  min-height: 2rem;
-  margin: 0.5 rem;
+  min-height: 3rem;
 }
 
 .choice__cross {
@@ -51,7 +49,6 @@ label {
   border-radius: 50%;
   min-height: 2rem;
   vertical-align: middle;
-  display: inline;
 }
 
 /* navigation */
@@ -76,7 +73,12 @@ label {
   max-width: 60%;
 }
 
-.choice__result {
+.choice__result--big {
   font-weight: bold;
   font-size: 2rem;
+}
+
+.choice__victory {
+  max-width: 70%;
+  border-radius: 10px;
 }

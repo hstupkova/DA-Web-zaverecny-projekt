@@ -223,19 +223,19 @@ export const choice = [
   },
   {
     id: 13,
-    sentence: 'Set a __________ to change the boldness of a font.',
+    sentence: '__________ is the text that makes up programs.',
     options: [
       {
-        word: 'font size',
-        correct: false,
-      },
-      {
-        word: 'font style',
-        correct: false,
-      },
-      {
-        word: 'font weight',
+        word: 'Code',
         correct: true,
+      },
+      {
+        word: 'digits',
+        correct: false,
+      },
+      {
+        word: 'block',
+        correct: false,
       },
     ],
   },

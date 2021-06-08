@@ -45,7 +45,7 @@ const Audio = () => {
         <section className="listening__text">
           <h1 className="heading">Poslech</h1>
           <p className="text">
-            Poslechni si nahrávku a doplň chybějící slovo věty.
+            Poslechni si nahrávku a doplň chybějící slovo do věty.
           </p>
           <p className="text">Zodpovězeno správně {points}/15.</p>
         </section>
@@ -77,13 +77,8 @@ const Audio = () => {
                   alt="good answer"
                 />
               ) : null}
-              {!answerAccepted ? (
-                <div
-                  className="listening__feedback--negative"
-                  style={{
-                    display: answerAccepted === false ? 'inline-block' : 'none',
-                  }}
-                >
+              {answerAccepted === false ? (
+                <div className="listening__feedback--negative">
                   <img
                     className="listening__cross"
                     src="./assets/cross.svg"
@@ -126,18 +121,16 @@ const Audio = () => {
             />
           </div>
         )}
-        <div className="listening__result">
-          {audioIndex >= audioArray.length && (
-            <div>
-              <p className="listening__result--big">Jsi v cíli!</p>
-              <img
-                className="listening__victory"
-                src="./assets/finish-listening.jpg"
-                alt="woman celebrating victory"
-              />
-            </div>
-          )}
-        </div>
+        {audioIndex >= audioArray.length && (
+          <div className="listening__result">
+            <p className="listening__result--big">Jsi v cíli!</p>
+            <img
+              className="listening__victory"
+              src="./assets/finish-listening.jpg"
+              alt="woman celebrating victory"
+            />
+          </div>
+        )}
       </main>
     </>
   );
