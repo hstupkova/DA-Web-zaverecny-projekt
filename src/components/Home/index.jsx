@@ -3,6 +3,7 @@ import './style.css';
 
 import Activity from '../Activity';
 import { activities } from './activities.js';
+import programmer from './img/programmer.svg';
 
 const Home = () => (
   <main className="home">
@@ -12,12 +13,12 @@ const Home = () => (
       <div className="introduction__picture-wrapper">
         <img
           className="introduction__picture"
-          src="./assets/programmer.svg"
+          src={programmer}
           alt="programmer"
         />
       </div>
       <p className="introduction__text">
-        Uvažuješ nad prací frontendisty a obáváš se práce v mezinárodním týmu kvůli angličtině? Lámeš si při čtení dokumentace hlavu nad anglickou terminologií? Věříme, že zde najdeš pomoc při studiu odborných anglických slovíček. Stačí si vybrat, kterou aktivitou si přeješ začít.
+        Uvažuješ nad prací frontendisty a obáváš se práce v mezinárodním týmu kvůli angličtině? Lámeš si při čtení dokumentace hlavu nad anglickou terminologií? Věříme, že zde najdeš pomoc při studiu odborných anglických slovíček. Stačí si vybrat, kterou aktivitou začít.
       </p>
     </section>
 

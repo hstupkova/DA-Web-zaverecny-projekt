@@ -41,7 +41,7 @@
   text-align: center;
   padding-left: var(--spacer);
   padding-right: var(--spacer);
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 }
 
 
@@ -84,19 +84,7 @@
   }
   
 }
-/*
-.pairs__button {
-  background-color: #4FC4C2;
-  font-size: 1rem;
-  padding: 1rem;
-  width: 135px;
-  border: 2px solid white;
-  border-radius: 10px;
-  text-transform: uppercase;
-  color: white;
-  cursor: pointer;
-}
-*/
+
 /* End of game */
 @keyframes display {
   0% {
