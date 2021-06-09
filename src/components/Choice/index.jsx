@@ -41,7 +41,9 @@ const Choice = () => {
         <section className="choice__text">
           <h1 className="heading">Výběr slov</h1>
           <p className="text">Zvol chybějící slovo ve větě.</p>
-          <p className="text">Zodpovězeno správně {points}/16.</p>
+          <p className="choice__points text">
+            Zodpovězeno správně {points}/16.
+          </p>
         </section>
         {choice && (
           <div>

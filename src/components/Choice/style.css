@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.choice__points {
+  font-weight: bold;
+}
+
 /* assignement */
 .choice__text {
   padding-left: var(--spacer);

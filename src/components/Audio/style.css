@@ -10,8 +10,8 @@
   padding-right: var(--spacer);
 }
 
-.listening__assignement {
-  margin-top: calc(var(--spacer) * 2);
+.listening__points {
+  font-weight: bold;
 }
 
 .listening__sentence {
@@ -45,7 +45,7 @@ input[type='text'] {
   border-radius: 50%;
   display: block;
   margin: auto;
-  min-height: 3rem;
+  min-height: 2.5rem;
   cursor: pointer;
 }
 

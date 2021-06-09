@@ -11,22 +11,32 @@ const Audio = () => {
   const [answerAccepted, setAnswerAccepted] = useState(null);
   const [audioIndex, setAudioIndex] = useState(0);
   const audio = audioArray[audioIndex];
-  const [play, { stop, duration }] = useSound(`${audio?.path}`, {
-    interrupt: true,
-  });
   const [points, setPoints] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [play, { stop }] = useSound(`${audio?.path}`, {
+    onend: () => {
+      setIsPlaying(false);
+    },
+  });
 
-  // useEffect(() => {
-  //   console.log('start');
-  //   return () => {
-  //     console.log('Ahoj');
-  //     stop();
-  //   };
-  // }, []);
+  useEffect(() => {
+    return () => {
+      stop();
+    };
+  }, [stop]);
 
   useEffect(() => {
     shuffleArray(audioArray);
   }, []);
+
+  const handleSound = () => {
+    if (isPlaying) {
+      stop();
+    } else {
+      play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   const handleChange = (event) => {
     setAnswer(event.target.value);
@@ -52,17 +62,32 @@ const Audio = () => {
           <p className="text">
             Poslechni si nahrávku a doplň chybějící slovo do věty.
           </p>
-          <p className="text">Zodpovězeno správně {points}/15.</p>
+          <p className="listening__points text">
+            Zodpovězeno správně {points}/15.
+          </p>
         </section>
         {audio && (
           <>
             <section className="listening__assignement">
-              <img
-                className="listening__speaker"
-                src="./assets/speaker.svg"
-                alt="speaker"
-                onClick={play}
-              />
+              {isPlaying ? (
+                <>
+                  <img
+                    onClick={handleSound}
+                    className="listening__speaker"
+                    src="./assets/sound-off.svg"
+                    alt="speaker off"
+                  />
+                </>
+              ) : (
+                <>
+                  <img
+                    onClick={handleSound}
+                    className="listening__speaker"
+                    src="./assets/sound-on.svg"
+                    alt="speaker on"
+                  />
+                </>
+              )}
               <p className="listening__sentence text">
                 {audio.textA}{' '}
                 <input
