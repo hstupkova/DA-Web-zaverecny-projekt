@@ -42,6 +42,7 @@
   padding-left: var(--spacer);
   padding-right: var(--spacer);
   font-size: 1.125rem;
+  font-weight: bold;
 }
 
 

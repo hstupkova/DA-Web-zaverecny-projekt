@@ -6,13 +6,13 @@ const Footer = () => {
     <footer className="footer">
       <p className="footer__text">Vyrobeno s 🖤 pro Czechitas, 2021</p>
       <p className="footer__text">
-        Technology vector created by{' '}
-        <a href="https://www.freepik.com/vectors/technology">pikisuperstar</a> |
-        Quote vector created by{' '}
-        <a href="https://www.freepik.com/vectors/quote">freepik</a> | pictures
-        from <a href="https://www.freepik.com/">freepik</a> | icons from{' '}
-        <a href="https://iconmonstr.com/">iconmonstr</a> | texts inspired by{' '}
-        <a href="https://eloquentjavascript.net/">Eloquent JavaScript</a> and{' '}
+        pictures from {' '}
+        <a href="https://www.freepik.com/">freepik</a> | 
+        icons from{' '}
+        <a href="https://iconmonstr.com/">iconmonstr</a> | 
+        texts inspired by{' '}
+        <a href="https://eloquentjavascript.net/">Eloquent JavaScript</a> 
+        {' '}and{' '}
         <a href="https://eloquentjavascript.net/">MarkSheet</a>
       </p>
     </footer>

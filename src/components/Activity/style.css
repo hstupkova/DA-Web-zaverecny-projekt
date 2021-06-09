@@ -1,6 +1,8 @@
 .activity {
   border: 1px solid var(--c-accent);
+  border-radius: 10px;
   padding: calc(var(--spacer) / 2);
+  background-color: var(--c-accent);
 }
 
 .activity__link {
@@ -16,7 +18,7 @@
 .activity__title,
 .activity__description {
   font-family: var(--font);
-  color: var(--c-font);
+  color: var(--c-font-light);
   text-align: center;
 }
 
