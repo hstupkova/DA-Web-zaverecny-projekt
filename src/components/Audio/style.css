@@ -46,6 +46,7 @@ input[type='text'] {
   display: block;
   margin: auto;
   min-height: 3rem;
+  cursor: pointer;
 }
 
 .listening__check {

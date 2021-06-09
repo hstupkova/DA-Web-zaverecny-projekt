@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 import { audio as audioArray } from './audio';
+import { shuffleArray } from '../../library/shuffleArray';
 import Button from '../Button';
 
 import './style.css';
@@ -22,6 +23,10 @@ const Audio = () => {
   //     stop();
   //   };
   // }, []);
+
+  useEffect(() => {
+    shuffleArray(audioArray);
+  }, []);
 
   const handleChange = (event) => {
     setAnswer(event.target.value);
@@ -126,7 +131,7 @@ const Audio = () => {
             <p className="listening__result--big">Jsi v cíli!</p>
             <img
               className="listening__victory"
-              src="./assets/finish-listening.jpg"
+              src="./assets/finish-listening.svg"
               alt="woman celebrating victory"
             />
           </div>
