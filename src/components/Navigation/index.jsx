@@ -9,6 +9,10 @@ const Navigation = () => {
     setHamburger(!hamburger);
   };
 
+  const handleClickItem = () => {
+    setHamburger(false);
+  }
+
   return (
     <nav className="menu">
       <button 
@@ -21,35 +25,40 @@ const Navigation = () => {
           <NavLink 
             exact to="/" 
             className="menu__item" 
-            activeClassName="menu__item--current">
+            activeClassName="menu__item--current"
+            onClick={handleClickItem}>
             Domů
           </NavLink>
 
           <NavLink 
             to="/hledani-dvojic" 
             className="menu__item" 
-            activeClassName="menu__item--current">
+            activeClassName="menu__item--current"
+            onClick={handleClickItem}>
             Hledání dvojic
           </NavLink>
 
           <NavLink 
             to="/poslech" 
             className="menu__item" 
-            activeClassName="menu__item--current">
+            activeClassName="menu__item--current"
+            onClick={handleClickItem}>
             Poslech
           </NavLink>
 
           <NavLink 
             to="/vyber-slov" 
             className="menu__item" 
-            activeClassName="menu__item--current">
+            activeClassName="menu__item--current"
+            onClick={handleClickItem}>
             Výběr slov
           </NavLink>
 
           <NavLink 
             to="/o-projektu" 
             className="menu__item" 
-            activeClassName="menu__item--current">
+            activeClassName="menu__item--current"
+            onClick={handleClickItem}>
             O projektu
           </NavLink>
         </div>
