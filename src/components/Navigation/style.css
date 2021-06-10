@@ -46,7 +46,6 @@
 }
 
 .menu__item:hover,
-.menu__item:focus,
 .menu__item:active {
   background-color: var(--c-bckgr-primary);
   color: var(--c-accent);
@@ -102,7 +101,6 @@
   }
 
   .menu__item--current:hover.menu__item--current::after,
-  .menu__item--current:focus.menu__item--current::after,
   .menu__item--current:active.menu__item--current::after {
     content: '';
     display: block;
@@ -138,7 +136,6 @@
   }
 
   .menu__item--current:hover.menu__item--current::after,
-  .menu__item--current:focus.menu__item--current::after,
   .menu__item--current:active.menu__item--current::after {
     top: 56px;
     left: 71px;
