@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { choice as choiceArray } from './choice';
+import { choice } from './choice';
 import { shuffleArray } from '../../library/shuffleArray';
 import Button from '../Button';
 import './style.css';
@@ -8,12 +8,12 @@ const Choice = () => {
   const [answer, setAnswer] = useState('');
   const [answerAccepted, setAnswerAccepted] = useState(null);
   const [choiceIndex, setChoiceIndex] = useState(0);
-  const choice = choiceArray[choiceIndex];
+  const [array, setArray] = useState(choice);
   const [points, setPoints] = useState(0);
+  const choiceItem = array[choiceIndex];
 
   useEffect(() => {
-    shuffleArray(choiceArray);
-    handleChange(event);
+    setArray(shuffleArray(array));
   }, []);
 
   const handleChange = (event) => {
@@ -21,7 +21,7 @@ const Choice = () => {
   };
 
   const isRightAnswer = () =>
-    choice.options.find((item) => item.correct === true).word;
+    choiceItem.options.find((item) => item.correct === true).word;
 
   const handleClick = () => {
     answer === isRightAnswer()
@@ -45,12 +45,12 @@ const Choice = () => {
             Zodpovězeno správně {points}/16.
           </p>
         </section>
-        {choice && (
+        {choiceItem && (
           <div>
-            <section className="choice__assignement">
-              <p className="choice__sentence text">{choice.sentence}</p>
+            <section className="choice__assignment">
+              <p className="choice__sentence text">{choiceItem.sentence}</p>
               <div className="choice__options text" onChange={handleChange}>
-                {choice.options.map((item) => (
+                {choiceItem.options.map((item) => (
                   <label key={item.word} className="choice__label">
                     <input type="radio" name="answer" value={item.word} />
                     {item.word}
@@ -111,7 +111,7 @@ const Choice = () => {
             />
           </div>
         )}
-        {choiceIndex >= choiceArray.length && (
+        {choiceIndex >= array.length && (
           <div className="choice__result">
             <p className="choice__result--big">Jsi v cíli!</p>
             <img

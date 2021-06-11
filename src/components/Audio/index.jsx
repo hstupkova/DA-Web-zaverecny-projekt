@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 import { audio as audioArray } from './audio';
-import { shuffleArray } from '../../library/shuffleArray';
 import Button from '../Button';
 
 import './style.css';
@@ -25,10 +24,6 @@ const Audio = () => {
     };
   }, [stop]);
 
-  useEffect(() => {
-    shuffleArray(audioArray);
-  }, []);
-
   const handleSound = () => {
     if (isPlaying) {
       stop();
@@ -49,6 +44,7 @@ const Audio = () => {
   };
 
   const handleAudioIndex = () => {
+    setIsPlaying(false);
     setAudioIndex(audioIndex + 1);
     setAnswer('');
     setAnswerAccepted(null);
@@ -68,15 +64,25 @@ const Audio = () => {
         </section>
         {audio && (
           <>
-            <section className="listening__assignement">
+            <section className="listening__assignment">
               {isPlaying ? (
                 <>
-                  <img
-                    onClick={handleSound}
-                    className="listening__speaker"
-                    src="./assets/sound-off.svg"
-                    alt="speaker off"
-                  />
+                  <div onClick={handleSound} className="listening__sound">
+                    <img
+                      className="listening__speaker"
+                      src="./assets/sound-off.svg"
+                      alt="speaker off"
+                    />
+                    <div className="listening__loader">
+                      <span className="listening__stroke"></span>
+                      <span className="listening__stroke"></span>
+                      <span className="listening__stroke"></span>
+                      <span className="listening__stroke"></span>
+                      <span className="listening__stroke"></span>
+                      <span className="listening__stroke"></span>
+                      <span className="listening__stroke"></span>
+                    </div>
+                  </div>
                 </>
               ) : (
                 <>

@@ -6,14 +6,15 @@ const About = () => (
     <h1 className="heading">O projektu</h1>
     <p className="text">
       Projekt Frontend English má za cíl podpořit studentky Digitální akademie
-      Czechitas, které se chtějí stát front-end vývojářkami, na jejich cestě
-      za vysněnou prací. Nabízená cvičení pomáhají zlepšit si slovní zásobu a
+      Czechitas, které se chtějí stát front-end vývojářkami, na jejich cestě za
+      vysněnou prací. Nabízená cvičení pomáhají zlepšit si slovní zásobu a
       zároveň poskytují možnost si i otestovat základní znalosti z UX, HTML,
       CSS, JavaScriptu a Reactu.
     </p>
     <p className="text">
-      Tato webová aplikace vznikla jako závěrečný projekt jarního běhu Digitální
-      akademie WEB v roce 2021 pod dohledem mentora Petra Heraleckého. Bližší
+      Tato webová aplikace vznikla jako závěrečný projekt studentek jarního běhu
+      Digitální akademie WEB v roce 2021 pod dohledem mentora Petra Heraleckého.
+      Zvukové záznamy byly vytvořeny ve spolupráci s Nadeemem Meghji. Bližší
       informace o autorkách naleznete níže.
     </p>
     <h2 className="subheading">Eva Jánošková</h2>
