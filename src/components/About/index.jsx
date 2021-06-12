@@ -91,11 +91,6 @@ const About = () => {
             Vyplňte prosím následující formulář (všechna pole jsou povinná).
           </p>
           <form onSubmit={handleSubmit} className="form">
-            <input
-              type="hidden"
-              name="_feedback.success.title"
-              value="Vaše zpráva byla odeslána!"
-            />
             <div className="form-field">
               <label htmlFor="name">Jméno</label>
               <input
