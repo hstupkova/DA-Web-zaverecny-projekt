@@ -8,13 +8,15 @@ const About = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
+  const address = 'https://submit-form.com/w8T4R7vf';
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
   };
 
   useEffect(() => {
-    fetch('https://submit-form.com/w8T4R7vf', {
+    fetch('zde bude proměnná address', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
