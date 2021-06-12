@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import Button from '../Button';
 
 const About = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [sender, setSender] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  useEffect(() => {
+    fetch('https://submit-form.com/w8T4R7vf', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        sender,
+        email,
+        message,
+      }),
+    });
+  }, [submitted]);
+
   return (
     <main className="about">
       <h1 className="heading">O projektu</h1>
@@ -56,53 +81,60 @@ const About = () => {
       </p>
       <h2 className="subheading">Chcete nás kontaktovat?</h2>
 
-      <p className="text">
-        Vyplňte prosím následující formulář (všechna pole jsou povinná).
-      </p>
-      <form action="https://submit-form.com/w8T4R7vf" className="form">
-        <input
-          type="hidden"
-          name="_redirect"
-          value="https://frontend-english.netlify.app/odeslano"
-        />
-        <input
-          type="hidden"
-          name="_feedback.success.title"
-          value="Vaše zpráva byla odeslána!"
-        />
-        <div className="form-field">
-          <label htmlFor="name">Jméno</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required=""
-            className="form-field__name"
-          />
-        </div>
-        <div className="form-field">
-          <label htmlFor="email">E-mail</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required=""
-            className="form-field__email"
-          />
-        </div>
-        <div className="form-field">
-          <label htmlFor="message">Vzkaz</label>
-          <textarea
-            id="message"
-            name="message"
-            required=""
-            className="form-field__message"
-          ></textarea>
-        </div>
-        <Button type="submit" page="about">
-          Odeslat
-        </Button>
-      </form>
+      {submitted ? (
+        <p className="text">Děkujeme za zprávu!</p>
+      ) : (
+        <>
+          <p className="text">
+            Vyplňte prosím následující formulář (všechna pole jsou povinná).
+          </p>
+          <form onSubmit={handleSubmit} className="form">
+            <input
+              type="hidden"
+              name="_feedback.success.title"
+              value="Vaše zpráva byla odeslána!"
+            />
+            <div className="form-field">
+              <label htmlFor="name">Jméno</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required=""
+                className="form-field__name"
+                value={sender}
+                onChange={(e) => setSender(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="email">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required=""
+                className="form-field__email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="message">Vzkaz</label>
+              <textarea
+                id="message"
+                name="message"
+                required=""
+                className="form-field__message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
+            </div>
+            <Button type="submit" page="about">
+              Odeslat
+            </Button>
+          </form>
+        </>
+      )}
     </main>
   );
 };

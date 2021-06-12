@@ -10,7 +10,6 @@ import Pairs from './components/Pairs';
 import Audio from './components/Audio';
 import Choice from './components/Choice';
 import About from './components/About';
-import Thanks from './components/Thanks';
 
 const App = () => (
   <Router>
@@ -36,10 +35,6 @@ const App = () => (
 
         <Route path="/o-projektu">
           <About />
-        </Route>
-
-        <Route path="/odeslano">
-          <Thanks />
         </Route>
       </Switch>
     </div>
