@@ -34,3 +34,8 @@
   background-color: #d3faf5;
   cursor: default;
 }
+
+.btn--about {
+  color: var(--c-font-light);
+  background-color: var(--c-accent);
+}

@@ -141,7 +141,7 @@ const Pairs = () => {
               <p className="gameover__mistakes">
                 {mistakes === 0
                   ? 'Uhodla jsi všechno napoprvé, jsi dobrá 👍'
-                  : `Netrefil ses ${mistakes}x.`}
+                  : `Netrefila ses ${mistakes}x.`}
               </p>
               <div className="game__button-wrapper">
                 <Button

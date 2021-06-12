@@ -10,32 +10,39 @@ import Pairs from './components/Pairs';
 import Audio from './components/Audio';
 import Choice from './components/Choice';
 import About from './components/About';
+import Thanks from './components/Thanks';
 
 const App = () => (
   <Router>
     <Navigation />
 
-    <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
+    <div className="app__content">
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
 
-      <Route path="/hledani-dvojic">
-        <Pairs />
-      </Route>
+        <Route path="/hledani-dvojic">
+          <Pairs />
+        </Route>
 
-      <Route path="/poslech">
-        <Audio />
-      </Route>
+        <Route path="/poslech">
+          <Audio />
+        </Route>
 
-      <Route path="/vyber-slov">
-        <Choice />
-      </Route>
+        <Route path="/vyber-slov">
+          <Choice />
+        </Route>
 
-      <Route path="/o-projektu">
-        <About />
-      </Route>
-    </Switch>
+        <Route path="/o-projektu">
+          <About />
+        </Route>
+
+        <Route path="/odeslano">
+          <Thanks />
+        </Route>
+      </Switch>
+    </div>
 
     <Footer />
   </Router>

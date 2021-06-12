@@ -9,7 +9,7 @@ const Footer = () => {
         pictures from <a href="https://www.freepik.com/">freepik</a> | icons
         from <a href="https://iconmonstr.com/">iconmonstr</a> | texts inspired
         by <a href="https://eloquentjavascript.net/">Eloquent JavaScript</a> and{' '}
-        <a href="https://marksheet.io/">MarkSheet</a> | Audio animation from{' '}
+        <a href="https://marksheet.io/">MarkSheet</a> | audio animation from{' '}
         <a href="https://codepen.io/WebKitCoding/pen/MWKQKKZ">CodePen</a>
       </p>
     </footer>

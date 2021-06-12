@@ -56,13 +56,14 @@ body {
   font-size: 1.125rem;
 }
 
-/* Buttons */
-.button {
-  color: var(--c-bckgr-primary);
-  font-family: var(--font);
-  font-size: 1.125rem;
-  background-color: var(--c-accent);
-  border: 2px solid var(--c-accent);
-  border-radius: 5px;
-  padding: 0.5em 1em;
+/* App layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app__content {
+  flex: 1 0 100%;
 }
