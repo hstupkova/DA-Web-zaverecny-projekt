@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { choice } from './choice';
 import { shuffleArray } from '../../library/shuffleArray';
 import Button from '../Button';
@@ -7,14 +7,10 @@ import './style.css';
 const Choice = () => {
   const [answer, setAnswer] = useState('');
   const [answerAccepted, setAnswerAccepted] = useState(null);
-  const [choiceIndex, setChoiceIndex] = useState(0);
-  const [array, setArray] = useState(choice);
   const [points, setPoints] = useState(0);
+  const [choiceIndex, setChoiceIndex] = useState(0);
+  const [array] = useState(shuffleArray(choice));
   const choiceItem = array[choiceIndex];
-
-  useEffect(() => {
-    setArray(shuffleArray(array));
-  }, []);
 
   const handleChange = (event) => {
     setAnswer(event.target.value);

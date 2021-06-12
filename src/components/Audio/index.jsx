@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
-import { audio as audioArray } from './audio';
+import { audio } from './audio';
+import { shuffleArray } from '../../library/shuffleArray';
 import Button from '../Button';
-
 import './style.css';
 
 const Audio = () => {
   const [answer, setAnswer] = useState('');
   const [answerAccepted, setAnswerAccepted] = useState(null);
-  const [audioIndex, setAudioIndex] = useState(0);
-  const audio = audioArray[audioIndex];
   const [points, setPoints] = useState(0);
+  const [audioIndex, setAudioIndex] = useState(0);
+  const [array] = useState(shuffleArray(audio));
+  const audioItem = array[audioIndex];
   const [isPlaying, setIsPlaying] = useState(false);
-  const [play, { stop }] = useSound(`${audio?.path}`, {
+  const [play, { stop }] = useSound(`${audioItem?.path}`, {
     onend: () => {
       setIsPlaying(false);
     },
@@ -38,7 +39,7 @@ const Audio = () => {
   };
 
   const handleClick = () => {
-    answer.toLowerCase().trim() === `${audio.reply}`
+    answer.toLowerCase().trim() === `${audioItem.reply}`
       ? setAnswerAccepted(true) & setPoints(points + 1)
       : setAnswerAccepted(false);
   };
@@ -62,7 +63,7 @@ const Audio = () => {
             Zodpovězeno správně {points}/15.
           </p>
         </section>
-        {audio && (
+        {audioItem && (
           <>
             <section className="listening__assignment">
               {isPlaying ? (
@@ -95,14 +96,14 @@ const Audio = () => {
                 </>
               )}
               <p className="listening__sentence text">
-                {audio.textA}{' '}
+                {audioItem.textA}{' '}
                 <input
                   autoFocus
                   type="text"
                   value={answer}
                   onChange={handleChange}
                 />
-                {audio.textB}
+                {audioItem.textB}
               </p>
             </section>
             <section className="listening__feedback">
@@ -123,7 +124,7 @@ const Audio = () => {
                   <p className="listening__solution text">
                     Správná odpověď je:{' '}
                     <span className="listening__solution--bold">
-                      {audio.reply}
+                      {audioItem.reply}
                     </span>
                     .
                   </p>
@@ -157,7 +158,7 @@ const Audio = () => {
             />
           </>
         )}
-        {audioIndex >= audioArray.length && (
+        {audioIndex >= array.length && (
           <div className="listening__result">
             <p className="listening__result--big">Jsi v cíli!</p>
             <img
